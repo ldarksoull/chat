@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/Main.css">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+    </head>
+    <body>
+       <div class="header">Анонимный онлайн чат для пидоров</div>
+        <div class="output"><textarea id="output" rows=20 cols=80 wrap=on readonly></textarea>
+        </div>
+        <div class="input"><input autofocus type="text" id="input" rows=4 cols=30>
+        <input type="submit" id = 'send'>
+        <input type="text" id="nick" value="nickname">
+        </div>
+    </body>
+    <script>
+        function click(){ //функция срабатывающая при клике
+            var text = document.getElementById('input').value; //получаем значение текста элемента ввода input и записыаем в переменную text 
+            var nickname = document.getElementById('nick').value;
+            var textarea = document.getElementById('output');
+            //получаем элемент вывода output
+            textarea.scrollTop = textarea.scrollHeight; //устанавливаем для него автопрокрутку
+            document.getElementById('output').append(nickname+ ": ",text + "\n");// добавляем к элементу вывода текст который мы сохранили и переводим на новую строку
+            document.getElementById('input').value = "";
+            //стираем текст записанный в элемент ввода
+        }
+        document.getElementById("send").onclick = click; //обработчик события для нажатия кнопки и привязка к нему функции click
+    </script>
+</html>
